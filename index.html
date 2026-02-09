@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>مطعم النخيل - قائمة الطعام والطلبات</title>
+
+  <!-- SEO -->
+  <meta name="description" content="مطعم النخيل يقدم أشهى المأكولات العربية والدولية. طلب عبر الواتساب، خدمة توصيل سريعة، قائمة طعام متنوعة." />
+  <meta name="keywords" content="مطعم, طعام عربي, وجبات سريعة, توصيل طعام, حجز طاولة, قائمة طعام" />
+  <meta name="author" content="مطعم النخيل" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="مطعم النخيل - أشهى المأكولات العربية" />
+  <meta property="og:description" content="اطلب وجبتك المفضلة عبر الواتساب واستمتع بتوصيل سريع" />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍴</text></svg>" />
+
+  <!-- Fonts (will be swapped by JS) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link id="fontLink" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- CSS FILE -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <i class="fas fa-utensils logo-icon"></i>
+        <span data-i18n="restaurant_name">مطعم النخيل</span>
+      </a>
+
+      <nav id="nav">
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#home" class="nav-link active" data-i18n="nav_home">الرئيسية</a></li>
+          <li><a href="#menu" class="nav-link" data-i18n="nav_menu">قائمة الطعام</a></li>
+          <li><a href="#order" class="nav-link" data-i18n="nav_order">كيفية الطلب</a></li>
+          <li><a href="#location" class="nav-link" data-i18n="nav_location">موقعنا</a></li>
+        </ul>
+      </nav>
+
+      <div class="lang-switch">
+        <select id="langSelect" aria-label="Language">
+          <option value="ar">AR</option>
+          <option value="en">EN</option>
+          <option value="de">DE</option>
+        </select>
+      </div>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container">
+      <h1 class="hero-title" data-i18n="hero_title">أشهى المأكولات العربية والأجنبية</h1>
+
+      <p class="hero-subtitle" data-i18n="hero_subtitle">
+        نقدم لكم في مطعم النخيل أفضل المأكولات الشرقية والغربية بأعلى معايير الجودة والنظافة. طلب عبر الواتساب مع خدمة توصيل سريعة.
+      </p>
+
+      <div class="cta-buttons">
+        <a href="#menu" class="btn" data-i18n="btn_browse_menu">تصفح القائمة</a>
+
+        <a id="heroWhatsapp"
+           href="https://wa.me/966551234567?text=مرحباً، أريد طلب وجبة من مطعم النخيل"
+           target="_blank" rel="noopener noreferrer"
+           class="btn btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+          <span data-i18n="btn_whatsapp_order">طلب عبر واتساب</span>
+        </a>
+
+        <a href="#location" class="btn btn-secondary" data-i18n="btn_visit">زيارتنا</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu -->
+  <section class="menu" id="menu">
+    <div class="container">
+      <h2 class="section-title" data-i18n="menu_title">قائمة الطعام</h2>
+
+      <div class="menu-categories">
+        <button class="category-btn active" data-category="all" data-i18n="cat_all">الكل</button>
+        <button class="category-btn" data-category="main" data-i18n="cat_main">الوجبات الرئيسية</button>
+        <button class="category-btn" data-category="appetizers" data-i18n="cat_appetizers">المقبلات</button>
+        <button class="category-btn" data-category="salads" data-i18n="cat_salads">السلطات</button>
+        <button class="category-btn" data-category="drinks" data-i18n="cat_drinks">المشروبات</button>
+        <button class="category-btn" data-category="desserts" data-i18n="cat_desserts">الحلويات</button>
+      </div>
+
+      <div class="menu-items" id="menuItems"></div>
+    </div>
+  </section>
+
+  <!-- Order -->
+  <section class="order" id="order">
+    <div class="container order-container">
+      <div class="order-info">
+        <h2 class="section-title" data-i18n="order_title">كيفية الطلب</h2>
+
+        <div class="order-feature">
+          <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+          <div>
+            <h3 data-i18n="order_feature1_title">طلب عبر الموقع أو الواتساب</h3>
+            <p data-i18n="order_feature1_desc">
+              يمكنك تصفح القائمة واختيار الوجبات المفضلة لديك وإضافتها إلى سلة التسوق، ثم إرسال الطلب عبر الواتساب بضغطة زر واحدة.
+            </p>
+          </div>
+        </div>
+
+        <div class="order-feature">
+          <div class="feature-icon"><i class="fas fa-shipping-fast"></i></div>
+          <div>
+            <h3 data-i18n="order_feature2_title">توصيل سريع</h3>
+            <p data-i18n="order_feature2_desc">
+              نوفر خدمة التوصيل السريع خلال 30-45 دقيقة في جميع أنحاء المدينة. توصيل مجاني للطلبات فوق 100 ريال.
+            </p>
+          </div>
+        </div>
+
+        <div class="order-feature">
+          <div class="feature-icon"><i class="fas fa-credit-card"></i></div>
+          <div>
+            <h3 data-i18n="order_feature3_title">دفع آمن</h3>
+            <p data-i18n="order_feature3_desc">
+              نقبل جميع وسائل الدفع: نقداً عند الاستلام، البطاقات المصرفية، أو المحافظ الإلكترونية.
+            </p>
+          </div>
+        </div>
+
+        <a id="orderWhatsapp"
+           href="https://wa.me/966551234567?text=مرحباً، أريد طلب وجبة من مطعم النخيل"
+           target="_blank" rel="noopener noreferrer"
+           class="btn btn-whatsapp whatsapp-order-btn">
+          <i class="fab fa-whatsapp"></i>
+          <span data-i18n="order_whatsapp_btn">اطلب الآن عبر واتساب</span>
+        </a>
+      </div>
+
+      <div>
+        <div class="phone-display">
+          <i class="fas fa-phone-alt phone-icon"></i>
+          <h3 style="margin-bottom:10px;" data-i18n="phone_box_title">للحجوزات والاستفسارات</h3>
+          <p class="phone-number">+966 55 123 4567</p>
+          <p data-i18n="phone_box_hours">نحن نعمل من الساعة 10 صباحاً حتى 12 منتصف الليل</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map -->
+  <section class="map-section" id="location">
+    <div class="container map-container">
+      <div class="map-info">
+        <h2 class="section-title" data-i18n="location_title">موقع المطعم</h2>
+
+        <div>
+          <h3 data-i18n="address_title">العنوان</h3>
+          <p data-i18n="address_value">حي الروضة، شارع الملك فهد، الرياض، المملكة العربية السعودية</p>
+        </div>
+
+        <div>
+          <h3 data-i18n="hours_title">ساعات العمل</h3>
+          <p data-i18n="hours_value1">الأحد - الخميس: 10:00 ص - 12:00 ص</p>
+          <p data-i18n="hours_value2">الجمعة والسبت: 1:00 م - 1:00 ص</p>
+        </div>
+
+        <div>
+          <h3 data-i18n="contact_info_title">معلومات الاتصال</h3>
+          <p data-i18n="contact_phone">الهاتف: +966 55 123 4567</p>
+          <p data-i18n="contact_email">البريد الإلكتروني: info@alnakhil-restaurant.com</p>
+        </div>
+
+        <a href="https://goo.gl/maps/example" target="_blank" rel="noopener noreferrer" class="btn">
+          <i class="fas fa-map-marker-alt"></i>
+          <span data-i18n="open_maps">افتح في خرائط جوجل</span>
+        </a>
+      </div>
+
+      <div class="map-placeholder">
+        <div class="map-overlay">
+          <i class="fas fa-map-marked-alt" style="font-size:4rem; margin-bottom:20px;"></i>
+          <h3 data-i18n="map_title">خريطة موقع المطعم</h3>
+          <p style="margin-top:10px;" data-i18n="map_hint">اضغط على الزر أعلاه لفتح الموقع في خرائط جوجل</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <h3 class="footer-title" data-i18n="footer_about_title">عن المطعم</h3>
+          <p data-i18n="footer_about_text">
+            مطعم النخيل يقدم أشهى المأكولات العربية والدولية منذ عام 2005. نحن نلتزم بمعايير الجودة والنظافة العالية لضمان رضا عملائنا.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-title" data-i18n="footer_links_title">روابط سريعة</h3>
+          <ul class="footer-links">
+            <li><a href="#home" class="footer-link" data-i18n="footer_link_home">الرئيسية</a></li>
+            <li><a href="#menu" class="footer-link" data-i18n="footer_link_menu">قائمة الطعام</a></li>
+            <li><a href="#order" class="footer-link" data-i18n="footer_link_order">كيفية الطلب</a></li>
+            <li><a href="#location" class="footer-link" data-i18n="footer_link_location">موقعنا</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-title" data-i18n="footer_follow">تابعنا</h3>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Twitter" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="Facebook" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="Snapchat" rel="noopener noreferrer"><i class="fab fa-snapchat-ghost"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>© <span id="currentYear"></span> <span data-i18n="copyright">مطعم النخيل. جميع الحقوق محفوظة.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Button -->
+  <button class="cart-btn" id="cartBtn" aria-label="Cart">
+    <i class="fas fa-shopping-cart"></i>
+    <div class="cart-count" id="cartCount">0</div>
+  </button>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3 class="cart-title" data-i18n="cart_title">سلة الطلبات</h3>
+      <button class="close-cart" id="closeCartBtn" aria-label="Close cart">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="cart-items" id="cartItems">
+      <div style="text-align:center; padding:40px 20px; color:#999;">
+        <i class="fas fa-shopping-cart" style="font-size:3rem; margin-bottom:15px;"></i>
+        <p data-i18n="cart_empty">سلة الطلبات فارغة</p>
+      </div>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span data-i18n="cart_total">المجموع</span>
+        <span id="cartTotal">0 ر.س</span>
+      </div>
+
+      <div class="cart-actions">
+        <button class="btn" id="checkoutBtn" style="width:100%;">
+          <i class="fab fa-whatsapp"></i>
+          <span data-i18n="cart_send_whatsapp">إرسال الطلب عبر واتساب</span>
+        </button>
+
+        <button class="btn btn-secondary" id="clearCartBtn" style="width:100%;">
+          <span data-i18n="cart_clear">تفريغ السلة</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- JS FILE -->
+  <script src="script.js"></script>
+</body>
+</html>
